@@ -18,7 +18,6 @@ const App = () => {
   const [weather, setWeather] = useState(null)
 
 
-
   const getWeather = async () => {
 
     const message = query.q ? query.q : "current location";
@@ -26,6 +25,7 @@ const App = () => {
 
     const data = await getFormattedWeatherData({ ...query, units })
       .then(data => { setWeather(data) })
+    toast.success("Data fetched successfully! ")
   };
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const App = () => {
       &copy; All Rights reserved 2024. This app is developed by <span className='font-bold text-white'>Utkarsh Shahare</span>
     </div>
     <div className='flex  sm:flex-row justify-center items-center gap-2 text-center sm:text-left mt-2'>
-      API: <a className='text-blue-800 font-bold underline' target='_blank' href="https://openweathermap.org/api">OpenWeatherMap</a>
+      API : <a className='text-blue-800 font-bold underline' target='_blank' href="https://openweathermap.org/api">OpenWeatherMap</a>
     </div>
   </div>
 </div>
