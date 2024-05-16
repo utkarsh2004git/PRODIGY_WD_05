@@ -7,6 +7,9 @@ import TempAndDetails from './components/TempAndDetails';
 import Forecast from './components/Forecast';
 import getFormattedWeatherData from './services/weatherServices';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
 
   const [query, setQuery] = useState({ q: 'tokyo' })
@@ -16,6 +19,10 @@ const App = () => {
 
 
   const getWeather = async () => {
+
+    const message=query.q?query.q :"current location";
+    toast.info(`Fetching weather data for ${message.charAt(0).toUpperCase()+message.slice(1)}`)
+
     const data = await getFormattedWeatherData({...query,units})
       .then(data => { setWeather(data) })
   };
@@ -45,6 +52,7 @@ const App = () => {
           </>
         )
       }
+      <ToastContainer autoClose={1000} hideProgressBar={true} theme='colored' />
 
     </div>
   )
