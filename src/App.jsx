@@ -9,7 +9,7 @@ import getFormattedWeatherData from './services/weatherServices';
 
 const App = () => {
 
-  const [query, setQuery] = useState({ q: 'tokyo' })
+  const [query, setQuery] = useState({ q: 'deori' })
   const [units, setUnits] = useState('metric')
   const [weather, setWeather] = useState(null)
 
@@ -26,15 +26,16 @@ const App = () => {
 
   return (
     <div className='mx-auto max-w-screen-lg  sm:mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400 from-cyan-600 to-blue-600 text-white '>
-      <TopButtons />
+      <TopButtons  setQuery={setQuery}/>
       <Inputs />
       {
         weather && (
           <>
             <TimeAndLocation weather={weather}/>
             <TempAndDetails weather={weather} />
-            <Forecast />
-            <Forecast />
+            <Forecast title='3 hours step forecast' data={weather.hourly} />
+            <Forecast title='Daily forecast' data={weather.daily} />
+
           </>
         )
       }
