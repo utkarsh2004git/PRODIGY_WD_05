@@ -5,26 +5,26 @@ import {FiWind} from 'react-icons/fi'
 import {GiSunrise,GiSunset} from 'react-icons/gi'
 import {MdKeyboardArrowDown,MdKeyboardArrowUp} from 'react-icons/md'
 
-const TempAndDetails = () => {
+const TempAndDetails = ({weather:{details,icon,temp,temp_min,temp_max,feels_like,humidity,speed,sunrise,sunset}}) => {
 
     const verticalDetails=[
         {
             id:1,
             Icon:FaThermometerEmpty,
             title:"Real Feel",
-            value:"22°",
+            value:`${feels_like.toFixed()}°`,
         },
         {
             id:2,
             Icon:BiSolidDropletHalf,
             title:"Humidity",
-            value:"36°",
+            value:`${humidity.toFixed()}%`,
         },
         {
             id:3,
             Icon:FiWind,
             title:"Wind",
-            value:"11 km/h",
+            value:`${speed.toFixed()} km/h`,
         },
     ]
     const horizontalDetails=[
@@ -32,40 +32,40 @@ const TempAndDetails = () => {
             id:1,
             Icon:GiSunrise,
             title:"Sunrise",
-            value:"05:33 AM",
+            value:sunrise,
         },
         {
             id:2,
             Icon:GiSunset,
             title:"Sunset",
-            value:"08:34 PM",
+            value:sunset,
         },
         {
             id:3,
             Icon:MdKeyboardArrowUp,
             title:"High",
-            value:"37°",
+            value:`${temp_max.toFixed()}°`,
         },
         {
-            id:3,
+            id:4,
             Icon:MdKeyboardArrowDown,
             title:"Low",
-            value:"7°",
+            value:`${temp_min.toFixed()}°`,
         },
     ]
 
   return (
     <div>
-        <div className='flex items-center justify-center py-6 text-xl text-cyan-300'>
-        <p>Rain</p>
+        <div className='flex items-center justify-center py-6 text-xl text-cyan-300 font-bold'>
+        <p>{details}</p>
         </div>
 
         <div className='flex items-center justify-between py-3 '> 
             <img
-                src="https://openweathermap.org/img/wn/01d@2x.png"  alt="weather-icon" 
-                className='w-20'
+                src={icon}  alt="weather-icon" 
+                className='w-20 cursor-pointer'
             />
-            <p className='text-5xl'>34&deg;</p>
+            <p className='text-5xl cursor-pointer '>{temp.toFixed()}&deg;</p>
 
             <div className='flex flex-col space-y-3 items-start'>
                 {
