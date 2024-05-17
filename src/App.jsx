@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <>
-      <div className={`mx-auto w-fit  sm:max-w-screen-lg  sm:mt-4 py-5 px-10 sm:px-32 bg-gradient-to-br   text-white ${formatBackground()}`}>
+      <div className={` border-4 border-white rounded-lg mx-auto w-fit  sm:max-w-screen-lg  sm:mt-4 py-5 px-10 sm:px-32 bg-gradient-to-br   text-white ${formatBackground()}`}>
         <TopButtons setQuery={setQuery} />
         <Inputs setQuery={setQuery} setUnits={setUnits} units={units} />
         {
